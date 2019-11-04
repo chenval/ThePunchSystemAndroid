@@ -240,7 +240,12 @@ public class RankFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
                                    HttpUtil.sendOkHttpRequest(address, data,null,new okhttp3.Callback(){
                                        @Override
                                        public void onFailure(Call call, IOException e) {
-
+                                           getActivity().runOnUiThread(new Runnable() {
+                                               @Override
+                                               public void run() {
+                                                   Toast.makeText(getContext(),"刷新session失败", Toast.LENGTH_SHORT).show();
+                                               }
+                                           });
                                        }
 
                                        @Override
