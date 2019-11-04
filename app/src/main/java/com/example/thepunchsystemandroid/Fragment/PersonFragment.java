@@ -23,6 +23,7 @@ import com.example.thepunchsystemandroid.Entity.indexStudents;
 import com.example.thepunchsystemandroid.Entity.student;
 import com.example.thepunchsystemandroid.Entity.unfinishTime;
 import com.example.thepunchsystemandroid.R;
+import com.example.thepunchsystemandroid.duankou;
 import com.example.thepunchsystemandroid.tool.FastBlurUtil;
 import com.example.thepunchsystemandroid.tool.HttpUtil;
 
@@ -136,8 +137,7 @@ public class PersonFragment extends DialogFragment {
             @Override
             public void onClick(View view) {
                 System.out.println("测试开始按钮");
-                // String url = "http://47.102.114.0:8083/startPunch";
-                String url = "http://47.102.114.0:8080/startPunch";
+                String url = duankou.getDuankou()+"startPunch";
                 SharedPreferences card = getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
                 System.out.println(card.getAll().toString());
                 JSONObject object = new JSONObject();
@@ -212,7 +212,7 @@ public class PersonFragment extends DialogFragment {
             @Override
             public void onClick(View view) {
                 //   String url = "http://47.102.114.0:8083/endPunch";
-                 String url = "http://47.102.114.0:8080/endPunch";
+                 String url = duankou.getDuankou()+"endPunch";
                 SharedPreferences card = getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
                 JSONObject object = new JSONObject();
                 try {
@@ -278,8 +278,7 @@ public class PersonFragment extends DialogFragment {
                             }
                         }
                     });
-                    //      String X="http://47.102.114.0:8083/getStudentAndPunchInfo";
-                    String X="http://47.102.114.0:8080/getStudentAndPunchInfo";
+                    String X=duankou.getDuankou()+"getStudentAndPunchInfo";
                     HttpUtil.sendOkHttpRequest(X,object.toString(),cookie,new okhttp3.Callback(){
                         @Override
                         public void onFailure(Call call, IOException e) {

@@ -23,6 +23,7 @@ import com.example.thepunchsystemandroid.Adapter.studentAdapter;
 import com.example.thepunchsystemandroid.Entity.indexStudents;
 import com.example.thepunchsystemandroid.Entity.student;
 import com.example.thepunchsystemandroid.R;
+import com.example.thepunchsystemandroid.duankou;
 import com.example.thepunchsystemandroid.tool.HttpUtil;
 import com.example.thepunchsystemandroid.tool.Utility;
 
@@ -136,8 +137,7 @@ public class RankFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
     private void queryStudents_Re(){
 
         SharedPreferences sharedPreferences=getActivity().getSharedPreferences("login", MODE_PRIVATE);
-        //    String url="http://47.102.114.0:8083/getStudentAndPunchInfo";
-      String url="http://47.102.114.0:8080/getStudentAndPunchInfo";
+        String url= duankou.getDuankou()+"getStudentAndPunchInfo";
         JSONObject object=new JSONObject();
         list=LitePal.findAll(indexStudents.class);
         studentsList.clear();
@@ -175,8 +175,7 @@ public class RankFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
             adapter.notifyDataSetChanged();
         }else {
             SharedPreferences sharedPreferences=getActivity().getSharedPreferences("login", MODE_PRIVATE);
-            //   String url="http://47.102.114.0:8083/getStudentAndPunchInfo";
-            String url="http://47.102.114.0:8080/getStudentAndPunchInfo";
+            String url=duankou.getDuankou()+"getStudentAndPunchInfo";
             JSONObject object=new JSONObject();
             try {
                 object.put("studentID",sharedPreferences.getString("username",null));
@@ -209,7 +208,7 @@ public class RankFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
             public void onResponse(Call call, Response response) throws IOException {
 
                final String responseText=response.body().string();
-               System.out.println(responseText+"获取所有信息");
+               System.out.println("r2222"+responseText+"获取所有信息");
                getActivity().runOnUiThread(new Runnable() {
                    @Override
                    public void run() {
@@ -220,7 +219,7 @@ public class RankFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
                            if (status.equals("success")) {
                                LitePal.deleteAll(indexStudents.class);
                                studentsList.clear();
-//        System.out.println("此时的长度，额"+studentsList.size());
+                               //  System.out.println("此时的长度，额"+studentsList.size());
                                adapter.notifyDataSetChanged();
                                Utility.handleMyAndAllResponse(responseText);
                                refreshLayout.setRefreshing(false);
@@ -228,8 +227,7 @@ public class RankFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
                            }
                            if(status.equals("fail")){
                                System.out.println("asdadadz+ssssss5555"+status);
-                               //   String address = "http://47.102.114.0:8083/login";
-                              String address = "http://47.102.114.0:8080/login";
+                               String address = duankou.getDuankou()+"login" ;
                                JSONObject object=new JSONObject();
                                try {
                                    SharedPreferences sharedPreference = getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
@@ -273,9 +271,4 @@ public class RankFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
             }
         });
     }
-
-
-
-
-
 }

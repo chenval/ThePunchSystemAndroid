@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.example.thepunchsystemandroid.Fragment.PersonFragment;
 import com.example.thepunchsystemandroid.Fragment.RankFragment;
 import com.example.thepunchsystemandroid.Fragment.SettingFragment;
-
+import com.example.thepunchsystemandroid.R;
 
 public class MainActivity extends BaseActivity  implements View.OnClickListener {
 
