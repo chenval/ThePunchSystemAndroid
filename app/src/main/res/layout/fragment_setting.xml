@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#E0DCDC">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#FF3C3F41"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:title="个人设置"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/update"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="  修改个人信息"
+                android:textSize="13sp"
+                android:gravity="center|left"
+                android:background="@drawable/change"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="-40dp"
+                android:scaleType="center"
+                android:src="@drawable/right"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/sign_out"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/change"
+                android:gravity="center|left"
+                android:text="  退出当前帐号"
+                android:textSize="13sp" />
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="-40dp"
+                android:scaleType="center"
+                android:src="@drawable/right"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/sign_out_app"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="  退出"
+                android:textSize="13sp"
+                android:gravity="center|left"
+                android:background="@drawable/change"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="-40dp"
+                android:scaleType="center"
+                android:src="@drawable/right"/>
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="10dp"/>-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="179dp"-->
+        <!--android:layout_height="52dp"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/sign_out_user"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_gravity="left"-->
+            <!--android:layout_marginTop="30dp"-->
+            <!--android:background="@drawable/change"-->
+            <!--android:text="退出当前账号"-->
+            <!--android:textSize="20sp" />-->
+
+        <!--<ImageView-->
+            <!--android:layout_width="108dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_gravity="right"-->
+            <!--android:layout_margin="220dp"-->
+            <!--android:src="@drawable/right" />-->
+    <!--</LinearLayout>-->
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="5dp"/>-->
+
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="179dp"-->
+        <!--android:layout_height="52dp"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/sign_out_app"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_gravity="left"-->
+            <!--android:layout_marginTop="30dp"-->
+            <!--android:background="@drawable/change"-->
+            <!--android:text="退出App"-->
+            <!--android:textSize="20sp" />-->
+
+        <!--<ImageView-->
+            <!--android:layout_width="108dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_gravity="right"-->
+            <!--android:layout_margin="220dp"-->
+            <!--android:src="@drawable/right" />-->
+    <!--</LinearLayout>-->
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"/>-->
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

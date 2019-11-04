@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:paddingLeft="20dp"
+        android:textSize="25dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00"
+        android:id="@+id/rank_id"/>
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/student_rank_id"
+        android:layout_marginLeft="10dp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/rank_id_name"
+            android:text="xxx"
+            android:textSize="20dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/rank_grade"
+            android:text="xxx"
+            android:layout_marginRight="30dp"
+            android:textSize="15dp"
+            />
+
+    </LinearLayout>
+
+
+    <TableLayout
+        android:gravity="center|right"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:shrinkColumns="1">
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="今日打卡："
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/Today_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="15dp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="本周打卡："
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/weekTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="15dp" />
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="本周剩余："
+                android:layout_marginLeft="30dp"
+                android:textSize="15dp" />
+            <TextView
+                android:id="@+id/weekLeftTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="15dp" />
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="打卡状态："
+                android:textSize="15dp" />
+            <TextView
+                android:id="@+id/startOrStop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="15dp" />
+        </TableRow>
+    </TableLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".updateActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#FF3C3F41"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="修改个人信息" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:shrinkColumns="1">
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="旧 密 码："
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/oldPassword"
+                android:layout_width="188dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberPassword" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="密     码："
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="188dp"
+                android:inputType="numberPassword"
+                android:layout_height="wrap_content"
+                />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="确认密码:"
+                android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/passwordCheck"
+            android:layout_width="188dp"
+            android:inputType="numberPassword"
+            android:layout_height="wrap_content"
+            />
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="性        别："
+                android:textSize="20dp" />
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/btnMan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="男"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:id="@+id/btnWoman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="女"/>
+            </RadioGroup>
+        </TableRow>
+
+    </TableLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="280dp">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/buttonstyle"
+            android:layout_weight="1"
+            android:text="确定"
+            android:id="@+id/updateOk"/>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

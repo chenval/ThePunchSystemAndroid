@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<litepal>
+    <dbname value="LC"></dbname>
+    <version value="2"></version>
+    <list>
+        <mapping class="com.example.thepunchsystemandroid.Entity.student"></mapping>
+        <mapping class="com.example.thepunchsystemandroid.Entity.indexStudents"></mapping>
+        <mapping class="com.example.thepunchsystemandroid.Entity.unfinishTime"></mapping>
+    </list>
+</litepal>

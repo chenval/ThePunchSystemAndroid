@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#FF3C3F41"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        >
+      <TextView
+          android:id="@+id/toolbar_title"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="排行榜"
+          android:textSize="20sp"
+          android:textColor="@color/colorWhite"/>
+
+    <Button
+        android:id="@+id/grade"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="10dp"
+        android:background="#FF3C3F41"
+        android:text="同级"
+        android:textColor="@color/colorWhite" />
+
+
+    </androidx.appcompat.widget.Toolbar>
+  <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:id="@+id/eRefresh_view">
+  <androidx.recyclerview.widget.RecyclerView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:id="@+id/recycler_view">
+  </androidx.recyclerview.widget.RecyclerView>
+  </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</LinearLayout>
