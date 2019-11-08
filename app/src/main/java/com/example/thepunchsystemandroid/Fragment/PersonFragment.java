@@ -137,7 +137,7 @@ public class PersonFragment extends DialogFragment {
             @Override
             public void onClick(View view) {
                 System.out.println("测试开始按钮");
-                String url = duankou.getDuankou()+"startPunch";
+                String url = duankou.getDuanKou()+"startPunch";
                 SharedPreferences card = getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
                 System.out.println(card.getAll().toString());
                 JSONObject object = new JSONObject();
@@ -212,7 +212,7 @@ public class PersonFragment extends DialogFragment {
             @Override
             public void onClick(View view) {
                 //   String url = "http://47.102.114.0:8083/endPunch";
-                 String url = duankou.getDuankou()+"endPunch";
+                 String url = duankou.getDuanKou()+"endPunch";
                 SharedPreferences card = getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
                 JSONObject object = new JSONObject();
                 try {
@@ -278,7 +278,7 @@ public class PersonFragment extends DialogFragment {
                             }
                         }
                     });
-                    String X=duankou.getDuankou()+"getStudentAndPunchInfo";
+                    String X=duankou.getDuanKou()+"getStudentAndPunchInfo";
                     HttpUtil.sendOkHttpRequest(X,object.toString(),cookie,new okhttp3.Callback(){
                         @Override
                         public void onFailure(Call call, IOException e) {

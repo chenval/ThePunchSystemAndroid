@@ -144,7 +144,7 @@ public class LoginActivity extends BaseActivity {
             JSONObject object=new JSONObject();
             try{
                 object.put("studentID",sharedPreference.getString("username",null));
-                 String url=duankou.getDuankou()+"getStudentAndPunchInfo";
+                 String url=duankou.getDuanKou()+"getStudentAndPunchInfo";
                 HttpUtil.sendOkHttpRequest(url,object.toString(),session,new okhttp3.Callback(){
                     @Override
                     public void onFailure(Call call, IOException e) {
@@ -177,7 +177,7 @@ public class LoginActivity extends BaseActivity {
                 showProgressDialog(LoginActivity.this,"登录中。。。");
                 String account = accountEdit.getText().toString();
                 String password = passwordEdit.getText().toString();
-                String address=duankou.getDuankou()+"login";
+                String address=duankou.getDuanKou()+"login";
                 if(account.length()!=0&&password.length()!=0){
                     JSONObject object=new JSONObject();
                     try {
@@ -264,7 +264,7 @@ public class LoginActivity extends BaseActivity {
                         finish();
                     }
                     if (status.equals("fail")) {
-                       String address = duankou.getDuankou()+"login";
+                       String address = duankou.getDuanKou()+"login";
                         JSONObject object=new JSONObject();
                         try {
                             SharedPreferences sharedPreference = getSharedPreferences("login", Context.MODE_PRIVATE);

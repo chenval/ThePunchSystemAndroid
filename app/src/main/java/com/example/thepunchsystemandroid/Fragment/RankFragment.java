@@ -78,6 +78,9 @@ public class RankFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
                     edit.putString("sessionid",sessionid);
                     edit.apply();
                     break;
+                case 6:
+                    queryStudents_Re();
+                    break;
             }
         }
     };
@@ -138,7 +141,7 @@ public class RankFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
     private void queryStudents_Re(){
 
         SharedPreferences sharedPreferences=getActivity().getSharedPreferences("login", MODE_PRIVATE);
-        String url= duankou.getDuankou()+"getStudentAndPunchInfo";
+        String url= duankou.getDuanKou()+"getStudentAndPunchInfo";
         JSONObject object=new JSONObject();
         list=LitePal.findAll(indexStudents.class);
         studentsList.clear();
@@ -176,7 +179,7 @@ public class RankFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
             adapter.notifyDataSetChanged();
         }else {
             SharedPreferences sharedPreferences=getActivity().getSharedPreferences("login", MODE_PRIVATE);
-            String url=duankou.getDuankou()+"getStudentAndPunchInfo";
+            String url=duankou.getDuanKou()+"getStudentAndPunchInfo";
             JSONObject object=new JSONObject();
             try {
                 object.put("studentID",sharedPreferences.getString("username",null));
@@ -228,7 +231,7 @@ public class RankFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
                            }
                            if(status.equals("fail")){
                                System.out.println("asdadadz+ssssss5555"+status);
-                               String address = duankou.getDuankou()+"login" ;
+                               String address = duankou.getDuanKou()+"login" ;
                                JSONObject object=new JSONObject();
                                try {
                                    SharedPreferences sharedPreference = getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
@@ -257,7 +260,10 @@ public class RankFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
                                            SharedPreferences.Editor edit = share.edit();//编辑文件
                                            edit.putString("sessionid",sessionid);
                                            edit.apply();
-                                           queryStudents_Re();
+                                           Message message=new Message();
+                                           message.what=6;
+                                           handler.sendMessage(message);
+
                                        }
                                    });
                                }catch (JSONException E){
