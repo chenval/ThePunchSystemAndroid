@@ -25,6 +25,7 @@ import com.example.thepunchsystemandroid.Entity.student;
 import com.example.thepunchsystemandroid.R;
 import com.example.thepunchsystemandroid.duankou;
 import com.example.thepunchsystemandroid.tool.HttpUtil;
+import com.example.thepunchsystemandroid.tool.HttpUtilGet;
 import com.example.thepunchsystemandroid.tool.Utility;
 
 import org.json.JSONException;
@@ -192,7 +193,7 @@ public class RankFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
         }
     }
     private void queryFromServer(String url,String json,String session){
-        HttpUtil.sendOkHttpRequest(url,json,session,new okhttp3.Callback(){
+        HttpUtilGet.sendOkHttpRequestGet(url,json,session,new okhttp3.Callback(){
             @Override
             public void onFailure(Call call, IOException e) {
                 getActivity().runOnUiThread(new Runnable() {
