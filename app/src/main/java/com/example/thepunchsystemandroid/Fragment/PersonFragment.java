@@ -26,6 +26,7 @@ import com.example.thepunchsystemandroid.R;
 import com.example.thepunchsystemandroid.duankou;
 import com.example.thepunchsystemandroid.tool.FastBlurUtil;
 import com.example.thepunchsystemandroid.tool.HttpUtil;
+import com.example.thepunchsystemandroid.tool.HttpUtilGet;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -159,7 +160,7 @@ public class PersonFragment extends DialogFragment {
 
                         @Override
                         public void onResponse(Call call, Response response) throws IOException {
-                            String responseText = response.body().string();
+                           final String responseText = response.body().string();
                             System.out.println(responseText);
                             try {
                                 URL urlTime = new URL("http://www.baidu.com");
@@ -173,6 +174,8 @@ public class PersonFragment extends DialogFragment {
 
                                 JSONObject jsonObject = new JSONObject(responseText);
                                 String status = jsonObject.getString("status");
+
+
                                 if (status.equals("success")) {
                                     getActivity().runOnUiThread(new Runnable() {
                                         @Override
@@ -193,7 +196,25 @@ public class PersonFragment extends DialogFragment {
                                     getActivity().runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
-                                            Toast.makeText(getActivity(), "登录过期或者未在LC2打卡或打卡已经开始！", Toast.LENGTH_SHORT).show();
+                                            try {
+                                                JSONObject jsonObject1 = new JSONObject(responseText);
+                                                final  String msg;
+                                                if(jsonObject1.getString("msg").isEmpty()){
+                                                    msg=null;
+                                                }else{
+                                                    msg = jsonObject1.getString("msg");
+                                                }
+
+                                                if(msg.equals("已经在打卡或者没有登录。")) {
+                                                    Toast.makeText(getActivity(), "已经在打卡或者没有登录！", Toast.LENGTH_SHORT).show();
+                                                }else if(msg.equals("请尝试连接LC2，并且拔出网线重试打卡")){
+                                                    Toast.makeText(getActivity(), "未在LC2打卡", Toast.LENGTH_SHORT).show();
+                                                }else {
+                                                    Toast.makeText(getActivity(), "登陆过期！", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }catch (JSONException E){
+                                                E.printStackTrace();
+                                            }
                                         }
                                     });
                                 }
@@ -257,7 +278,10 @@ public class PersonFragment extends DialogFragment {
                                     getActivity().runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
-                                            if ( ms!=null){
+
+                                            if ( ms.equals("请尝试连接LC2，并且拔出网线重试打卡")) {
+                                                Toast.makeText(getActivity(), "请尝试连接LC2，并且拔出网线重试打卡", Toast.LENGTH_SHORT).show();
+                                            }else if( ms.equals("当前打卡时间过短小于半小时或者识别为隔天打卡记录，请稍后重新打卡。")){
                                                 Toast.makeText(getActivity(), "前打卡时间过短小于半小时或者识别为隔天打卡记录，请稍后重新打卡！", Toast.LENGTH_SHORT).show();
                                                 punch.setText("未打卡");
                                                 punch.setTextColor(getResources().getColor(R.color.colorGreen));
@@ -265,8 +289,10 @@ public class PersonFragment extends DialogFragment {
                                                 Message ms = new Message();
                                                 ms.what = 3;
                                                 handler.sendMessage(ms);
+                                            }else if(ms.equals("没有登录或者没有开始打卡。")){
+                                                Toast.makeText(getActivity(), "未打卡！", Toast.LENGTH_SHORT).show();
                                             }else {
-                                                Toast.makeText(getActivity(), "登录过期或者未在LC2打卡或未打卡！", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(getActivity(), "登陆过期！", Toast.LENGTH_SHORT).show();
                                             }
 
                                         }
@@ -279,7 +305,7 @@ public class PersonFragment extends DialogFragment {
                         }
                     });
                     String X=duankou.getDuanKou()+"getStudentAndPunchInfo";
-                    HttpUtil.sendOkHttpRequest(X,object.toString(),cookie,new okhttp3.Callback(){
+                    HttpUtilGet.sendOkHttpRequestGet(X,object.toString(),cookie,new okhttp3.Callback(){
                         @Override
                         public void onFailure(Call call, IOException e) {
                             getActivity().runOnUiThread(new Runnable() {
@@ -293,6 +319,7 @@ public class PersonFragment extends DialogFragment {
                         @Override
                         public void onResponse(Call call, Response response) throws IOException {
                             String responseText=response.body().string();
+                            System.out.println(responseText);
                             try {
                                 JSONObject jsonObject=new JSONObject(responseText).getJSONObject("student");
                                 String name=jsonObject.getString("name");
