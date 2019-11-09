@@ -74,8 +74,7 @@ public class registerActivity extends AppCompatActivity {
                         System.out.println(pw+"aaaaaaaaaaaaaa");
                         String pwC = passwordCheck.getText().toString();
                         System.out.println(pwC+"aaaaaaaaaaaaaa");
-                        //  String url = "http://47.102.114.0:8080/register";
-                       String url = "http://47.102.114.0:8083/register";
+                       String url = duankou.getDuanKou()+"/register";
                         JSONObject object = new JSONObject();
                         try {
                             object.put("studentId", studentId);
