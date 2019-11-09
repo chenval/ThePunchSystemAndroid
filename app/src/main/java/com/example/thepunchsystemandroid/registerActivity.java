@@ -13,7 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.thepunchsystemandroid.tool.HttpUtil;
+import com.example.thepunchsystemandroid.tool.HttpUtilPost;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -84,7 +84,7 @@ public class registerActivity extends AppCompatActivity {
                             object.put("ispunch",0);
                             object.put("photo","http://118.24.95.11:7000/pig.jpg");
                             System.out.println(object.toString()+"aaaaaaaaaaaaaa");
-                            HttpUtil.sendOkHttpRequest(url, object.toString(), null, new okhttp3.Callback() {
+                            HttpUtilPost.sendOkHttpRequest(url, object.toString(), null, new okhttp3.Callback() {
                                 @Override
                                 public void onFailure(Call call, IOException e) {
                                     runOnUiThread(new Runnable() {

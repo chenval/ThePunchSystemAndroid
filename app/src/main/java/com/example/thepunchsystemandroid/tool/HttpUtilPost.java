@@ -5,7 +5,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 
-public class HttpUtil {
+public class HttpUtilPost {
    public static void sendOkHttpRequest(String address,String json ,String session,okhttp3.Callback callback ){
        OkHttpClient client=new OkHttpClient();
        MediaType JSON = MediaType.parse("application/json; charset=utf-8");

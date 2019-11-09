@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.thepunchsystemandroid.tool.HttpUtil;
+import com.example.thepunchsystemandroid.tool.HttpUtilPost;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -145,7 +145,7 @@ public class LoginActivity extends BaseActivity {
             try{
                 object.put("studentID",sharedPreference.getString("username",null));
                  String url=duankou.getDuanKou()+"getStudentAndPunchInfo";
-                HttpUtil.sendOkHttpRequest(url,object.toString(),session,new okhttp3.Callback(){
+                HttpUtilPost.sendOkHttpRequest(url,object.toString(),session,new okhttp3.Callback(){
                     @Override
                     public void onFailure(Call call, IOException e) {
                         dismissProgressDialog();
@@ -185,7 +185,7 @@ public class LoginActivity extends BaseActivity {
                         object.put("password",password);
                         String data=object.toString();
 //                    System.out.println(object.toString());
-                        HttpUtil.sendOkHttpRequest(address, data,null,new okhttp3.Callback() {
+                        HttpUtilPost.sendOkHttpRequest(address, data,null,new okhttp3.Callback() {
                             @Override
                             public void onFailure(Call call, IOException e) {
                                 System.out.println("!!!!!!!!!!!!!!!!!!!!!");
@@ -272,7 +272,7 @@ public class LoginActivity extends BaseActivity {
                             object.put("studentID", sharedPreference.getString("username",""));
                             object.put("password", sharedPreference.getString("password",""));
                             String data = object.toString();
-                            HttpUtil.sendOkHttpRequest(address, data,null,new okhttp3.Callback(){
+                            HttpUtilPost.sendOkHttpRequest(address, data,null,new okhttp3.Callback(){
                                 @Override
                                 public void onFailure(Call call, IOException e) {
                                     dismissProgressDialog();

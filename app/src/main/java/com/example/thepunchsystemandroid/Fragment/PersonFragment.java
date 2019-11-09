@@ -13,10 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.thepunchsystemandroid.Entity.indexStudents;
@@ -25,24 +23,20 @@ import com.example.thepunchsystemandroid.Entity.unfinishTime;
 import com.example.thepunchsystemandroid.R;
 import com.example.thepunchsystemandroid.duankou;
 import com.example.thepunchsystemandroid.tool.FastBlurUtil;
-import com.example.thepunchsystemandroid.tool.HttpUtil;
+import com.example.thepunchsystemandroid.tool.HttpUtilPost;
 import com.example.thepunchsystemandroid.tool.HttpUtilGet;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.litepal.LitePal;
-
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
 import okhttp3.Call;
 import okhttp3.Response;
-
 
 public class PersonFragment extends DialogFragment {
     private Handler handler = new Handler() {
@@ -69,8 +63,6 @@ public class PersonFragment extends DialogFragment {
                     indexStudents c=(indexStudents)msg.obj;
                     c.updateAll("name = ?",c.getName());
                     break;
-
-
             }
         }
     };
@@ -90,11 +82,8 @@ public class PersonFragment extends DialogFragment {
     private TextView weekLeftTime;
     private unfinishTime time;
 
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
         time=LitePal.findFirst(unfinishTime.class);
         a = LitePal.findFirst(student.class);
         String name = a.getName();
@@ -124,10 +113,8 @@ public class PersonFragment extends DialogFragment {
             punch.setTextColor(getResources().getColor(R.color.colorGreen));
             StartTime.setText("还没有开始打卡！");
         }
-
         textView_name.setText(a.getName());
         textView_Id.setText(Long.toString(a.getStudentID()));
-
         return personLayout;
     }
 
@@ -147,7 +134,7 @@ public class PersonFragment extends DialogFragment {
                     SharedPreferences session = getActivity().getSharedPreferences("Session", Context.MODE_PRIVATE);
                     String cookie = session.getString("sessionid", "");
                     System.out.println(url+"   "+object.toString()+"     "+cookie);
-                    HttpUtil.sendOkHttpRequest(url, object.toString(), cookie, new okhttp3.Callback() {
+                    HttpUtilPost.sendOkHttpRequest(url, object.toString(), cookie, new okhttp3.Callback() {
                         @Override
                         public void onFailure(Call call, IOException e) {
                             getActivity().runOnUiThread(new Runnable() {
@@ -157,7 +144,6 @@ public class PersonFragment extends DialogFragment {
                                 }
                             });
                         }
-
                         @Override
                         public void onResponse(Call call, Response response) throws IOException {
                            final String responseText = response.body().string();
@@ -171,11 +157,8 @@ public class PersonFragment extends DialogFragment {
                                 Calendar calendar = Calendar.getInstance();
                                 calendar.setTimeInMillis(ld);
                                 final String format = formatter.format(calendar.getTime());
-
                                 JSONObject jsonObject = new JSONObject(responseText);
                                 String status = jsonObject.getString("status");
-
-
                                 if (status.equals("success")) {
                                     getActivity().runOnUiThread(new Runnable() {
                                         @Override
@@ -188,7 +171,6 @@ public class PersonFragment extends DialogFragment {
                                             ms.what = 2;
                                             ms.obj=format;
                                             handler.sendMessage(ms);
-
                                         }
                                     });
                                 }
@@ -204,7 +186,6 @@ public class PersonFragment extends DialogFragment {
                                                 }else{
                                                     msg = jsonObject1.getString("msg");
                                                 }
-
                                                 if(msg.equals("已经在打卡或者没有登录。")) {
                                                     Toast.makeText(getActivity(), "已经在打卡或者没有登录！", Toast.LENGTH_SHORT).show();
                                                 }else if(msg.equals("请尝试连接LC2，并且拔出网线重试打卡")){
@@ -218,7 +199,6 @@ public class PersonFragment extends DialogFragment {
                                         }
                                     });
                                 }
-
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -240,7 +220,7 @@ public class PersonFragment extends DialogFragment {
                     object.put("studentID", card.getString("username", null));
                     SharedPreferences session = getActivity().getSharedPreferences("Session", Context.MODE_PRIVATE);
                     String cookie = session.getString("sessionid", "");
-                    HttpUtil.sendOkHttpRequest(url, object.toString(), cookie, new okhttp3.Callback() {
+                    HttpUtilPost.sendOkHttpRequest(url, object.toString(), cookie, new okhttp3.Callback() {
                         @Override
                         public void onFailure(Call call, IOException e) {
                             getActivity().runOnUiThread(new Runnable() {
@@ -294,7 +274,6 @@ public class PersonFragment extends DialogFragment {
                                             }else {
                                                 Toast.makeText(getActivity(), "登陆过期！", Toast.LENGTH_SHORT).show();
                                             }
-
                                         }
                                     });
                                 }
@@ -374,13 +353,10 @@ public class PersonFragment extends DialogFragment {
                     public void run() {
                         imageView_back.setScaleType(ImageView.ScaleType.CENTER_CROP);
                         imageView_back.setImageBitmap(blurBitmap2);
-
                     }
                 });
             }
         }).start();
-
-
     }
 }
 

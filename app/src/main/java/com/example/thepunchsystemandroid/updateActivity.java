@@ -15,7 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.thepunchsystemandroid.tool.HttpUtil;
+import com.example.thepunchsystemandroid.tool.HttpUtilPost;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -77,7 +77,7 @@ public class updateActivity extends BaseActivity {
                                 System.out.println(object.toString());
                                 String url="http://47.102.114.0:8080/updateStudentInfo";
                               //  String url="http://47.102.114.0:8083/updateStudentInfo";
-                                HttpUtil.sendOkHttpRequest(url,object.toString(),session,new okhttp3.Callback(){
+                                HttpUtilPost.sendOkHttpRequest(url,object.toString(),session,new okhttp3.Callback(){
                                     @Override
                                     public void onFailure(Call call, IOException e) {
                                         runOnUiThread(new Runnable() {

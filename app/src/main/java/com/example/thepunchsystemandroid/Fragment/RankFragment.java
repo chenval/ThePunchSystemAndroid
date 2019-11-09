@@ -18,13 +18,12 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import com.example.thepunchsystemandroid.Adapter.studentAdapter;
 import com.example.thepunchsystemandroid.Entity.indexStudents;
 import com.example.thepunchsystemandroid.Entity.student;
 import com.example.thepunchsystemandroid.R;
 import com.example.thepunchsystemandroid.duankou;
-import com.example.thepunchsystemandroid.tool.HttpUtil;
+import com.example.thepunchsystemandroid.tool.HttpUtilPost;
 import com.example.thepunchsystemandroid.tool.HttpUtilGet;
 import com.example.thepunchsystemandroid.tool.Utility;
 
@@ -239,7 +238,7 @@ public class RankFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
                                    object.put("studentID", sharedPreference.getString("username",""));
                                    object.put("password", sharedPreference.getString("password",""));
                                    String data = object.toString();
-                                   HttpUtil.sendOkHttpRequest(address, data,null,new okhttp3.Callback(){
+                                   HttpUtilPost.sendOkHttpRequest(address, data,null,new okhttp3.Callback(){
                                        @Override
                                        public void onFailure(Call call, IOException e) {
                                            getActivity().runOnUiThread(new Runnable() {
