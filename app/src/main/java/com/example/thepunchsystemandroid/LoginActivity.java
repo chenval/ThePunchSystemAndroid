@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.thepunchsystemandroid.tool.HttpUtilGet;
 import com.example.thepunchsystemandroid.tool.HttpUtilPost;
 
 import org.json.JSONException;
@@ -145,7 +146,7 @@ public class LoginActivity extends BaseActivity {
             try{
                 object.put("studentID",sharedPreference.getString("username",null));
                  String url=duankou.getDuanKou()+"getStudentAndPunchInfo";
-                HttpUtilPost.sendOkHttpRequest(url,object.toString(),session,new okhttp3.Callback(){
+                HttpUtilGet.sendOkHttpRequestGet(url,object.toString(),session,new okhttp3.Callback(){
                     @Override
                     public void onFailure(Call call, IOException e) {
                         dismissProgressDialog();
@@ -166,6 +167,7 @@ public class LoginActivity extends BaseActivity {
         registe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(LoginActivity.this, "注册功能暂未开启", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(LoginActivity.this, registerActivity.class);
                 startActivity(intent);
             }
@@ -174,12 +176,12 @@ public class LoginActivity extends BaseActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showProgressDialog(LoginActivity.this,"登录中。。。");
                 String account = accountEdit.getText().toString();
                 String password = passwordEdit.getText().toString();
                 String address=duankou.getDuanKou()+"login";
                 if(account.length()!=0&&password.length()!=0){
                     JSONObject object=new JSONObject();
+                    showProgressDialog(LoginActivity.this,"登录中。。。");
                     try {
                         object.put("studentID",account);
                         object.put("password",password);
