@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -42,6 +43,7 @@ public class SettingFragment extends DialogFragment {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getActivity(), "更新暂未开放", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getActivity(), updateActivity.class);
                 startActivity(intent);
             }

@@ -167,7 +167,7 @@ public class LoginActivity extends BaseActivity {
         registe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(LoginActivity.this, "注册功能暂未开启", Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, "注册功能只能由管理员进行", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(LoginActivity.this, registerActivity.class);
                 startActivity(intent);
             }

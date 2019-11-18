@@ -75,8 +75,7 @@ public class updateActivity extends BaseActivity {
                                 object.put("sex",sex1);
                                 object.put("password",oldp);
                                 System.out.println(object.toString());
-                                String url="http://47.102.114.0:8080/updateStudentInfo";
-                              //  String url="http://47.102.114.0:8083/updateStudentInfo";
+                                String url=duankou.getDuanKou()+"updateStudentInfo";
                                 HttpUtilPost.sendOkHttpRequest(url,object.toString(),session,new okhttp3.Callback(){
                                     @Override
                                     public void onFailure(Call call, IOException e) {
@@ -107,6 +106,7 @@ public class updateActivity extends BaseActivity {
                                     @Override
                                     public void onResponse(Call call, Response response) throws IOException {
                                         final String responseText=response.body().string();
+                                        System.out.println(responseText);
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
