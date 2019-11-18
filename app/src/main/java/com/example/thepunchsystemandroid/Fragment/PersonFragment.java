@@ -212,7 +212,6 @@ public class PersonFragment extends DialogFragment {
         stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //   String url = "http://47.102.114.0:8083/endPunch";
                  String url = duankou.getDuanKou()+"endPunch";
                 SharedPreferences card = getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
                 JSONObject object = new JSONObject();

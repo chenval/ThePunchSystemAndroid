@@ -121,7 +121,7 @@ public class registerActivity extends AppCompatActivity {
                                                 JSONObject jsonObject = new JSONObject(responseText);
                                                 String status = jsonObject.getString("status");
                                                 if (status.equals("success")) {
-                                                    Toast.makeText(registerActivity.this, "注册成功。", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(registerActivity.this, "等待后台管理员处理。", Toast.LENGTH_LONG).show();
                                                     ActivityList.finishAll();
                                                     goToActivity(LoginActivity.class, null);
 
@@ -130,7 +130,7 @@ public class registerActivity extends AppCompatActivity {
                                                     finish();
                                                 }
                                                 if (status.equals("fail")) {
-                                                    Toast.makeText(registerActivity.this, "遇到未知因素，注册失败了555", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(registerActivity.this, "等待后台管理员处理", Toast.LENGTH_LONG).show();
                                                 }
 
                                             } catch (Exception e) {

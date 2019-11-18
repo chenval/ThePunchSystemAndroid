@@ -168,12 +168,12 @@ public class RankFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
             SharedPreferences sharedPreferences=getActivity().getSharedPreferences("login", MODE_PRIVATE);
             sharedPreferences.edit().putLong("userId",s.getStudentID()).putString("avatar",s.getAvatar()).apply();
             studentsList.clear();
-//            System.out.println("这是在查找后清空的长度"+studentsList.size());
+            System.out.println("这是在查找后清空的长度"+studentsList.size());
             for(indexStudents a:list){
                 studentsList.add(a);
-//                System.out.println(a.toString());
+                System.out.println(a.toString());
             }
-//            System.out.println("这是在查找后清空的长度后加入数据的长度"+studentsList.size());
+            System.out.println("这是在查找后清空的长度后加入数据的长度"+studentsList.size());
             Collections.sort(studentsList);
             adapter.notifyDataSetChanged();
         }else {
@@ -185,8 +185,8 @@ public class RankFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
                 //  System.out.println(object.toString());
                 SharedPreferences share = getActivity().getSharedPreferences("Session",MODE_PRIVATE);
                 String cookie=share.getString("sessionid","");
-                //  System.out.println(cookie);
-                //  System.out.println(share.getString("sessionid",null));
+                System.out.println(cookie);
+                System.out.println(share.getString("sessionid",null));
 
                 queryFromServer(url,object.toString(),cookie);
             }catch (JSONException e){
