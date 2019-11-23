@@ -15,15 +15,19 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.thepunchsystemandroid.AboutAppActivity;
 import com.example.thepunchsystemandroid.ActivityList;
 import com.example.thepunchsystemandroid.LoginActivity;
 import com.example.thepunchsystemandroid.R;
+import com.example.thepunchsystemandroid.aboutActivity;
 import com.example.thepunchsystemandroid.updateActivity;
 
 public class SettingFragment extends DialogFragment {
     private TextView log_off;
     private TextView log_out;
     private TextView update;
+    private TextView about;
+    private TextView aboutApp;
 
 
     @Override
@@ -34,6 +38,8 @@ public class SettingFragment extends DialogFragment {
         update=settings.findViewById(R.id.update);
         log_off=(TextView) settings.findViewById(R.id.sign_out);
         log_out=(TextView) settings.findViewById(R.id.sign_out_app);
+        about=settings.findViewById(R.id.about);
+        aboutApp=settings.findViewById(R.id.aboutApp);
         return settings;
     }
 
@@ -43,7 +49,7 @@ public class SettingFragment extends DialogFragment {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "更新暂未开放", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "更新需要后端通过才能修改成功", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getActivity(), updateActivity.class);
                 startActivity(intent);
             }
@@ -79,6 +85,20 @@ public class SettingFragment extends DialogFragment {
                     }
                 });
                 builder.show();
+            }
+        });
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), aboutActivity.class);
+                startActivity(intent);
+            }
+        });
+        aboutApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AboutAppActivity.class);
+                startActivity(intent);
             }
         });
     }

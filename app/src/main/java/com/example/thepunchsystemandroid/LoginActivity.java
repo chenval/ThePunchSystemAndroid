@@ -120,8 +120,7 @@ public class LoginActivity extends BaseActivity {
 
 
     public void clickHandler_reg(View view) {
-        Intent intent = new Intent(this, forgetActivity.class);  //跳转
-        LoginActivity.this.startActivity(intent);
+        Toast.makeText(LoginActivity.this, "鸽了鸽了，联系你的队长查后台", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -167,7 +166,7 @@ public class LoginActivity extends BaseActivity {
         registe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(LoginActivity.this, "注册功能只能由管理员进行", Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, "注册需要后台管理员申请过关才能成功", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(LoginActivity.this, registerActivity.class);
                 startActivity(intent);
             }
