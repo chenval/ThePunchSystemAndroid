@@ -146,7 +146,7 @@ public class PersonFragment extends DialogFragment {
                         }
                         @Override
                         public void onResponse(Call call, Response response) throws IOException {
-                           final String responseText = response.body().string();
+                            final String responseText = response.body().string();
                             System.out.println(responseText);
                             try {
                                 URL urlTime = new URL("http://www.baidu.com");
@@ -212,7 +212,7 @@ public class PersonFragment extends DialogFragment {
         stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 String url = duankou.getDuanKou()+"endPunch";
+                String url = duankou.getDuanKou()+"endPunch";
                 SharedPreferences card = getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
                 JSONObject object = new JSONObject();
                 try {
@@ -232,7 +232,7 @@ public class PersonFragment extends DialogFragment {
 
                         @Override
                         public void onResponse(Call call, Response response) throws IOException {
-                           final String responseText = response.body().string();
+                            final String responseText = response.body().string();
                             System.out.println("结束打卡"+responseText);
                             System.out.println(responseText);
                             try {

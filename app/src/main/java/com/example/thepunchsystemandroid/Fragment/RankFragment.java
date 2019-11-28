@@ -151,7 +151,7 @@ public class RankFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
         g=true;
         try {
             object.put("studentID",sharedPreferences.getString("username",null));
-             //  System.out.println(object.toString());
+            //  System.out.println(object.toString());
             SharedPreferences share = getActivity().getSharedPreferences("Session",MODE_PRIVATE);
             String cookie=share.getString("sessionid","");
             //  System.out.println(cookie);
@@ -210,70 +210,70 @@ public class RankFragment extends Fragment  implements SwipeRefreshLayout.OnRefr
             @Override
             public void onResponse(Call call, Response response) throws IOException {
 
-               final String responseText=response.body().string();
-               System.out.println("r2222"+responseText+"获取所有信息");
-               getActivity().runOnUiThread(new Runnable() {
-                   @Override
-                   public void run() {
-                       try{
+                final String responseText=response.body().string();
+                System.out.println("r2222"+responseText+"获取所有信息");
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try{
 
-                           JSONObject jsonObject = new JSONObject(responseText);
-                           String status = jsonObject.getString("status");
-                           if (status.equals("success")) {
-                               LitePal.deleteAll(indexStudents.class);
-                               studentsList.clear();
-                               //  System.out.println("此时的长度，额"+studentsList.size());
-                               adapter.notifyDataSetChanged();
-                               Utility.handleMyAndAllResponse(responseText);
-                               refreshLayout.setRefreshing(false);
-                               queryStudents();
-                           }
-                           if(status.equals("fail")){
-                               System.out.println("asdadadz+ssssss5555"+status);
-                               String address = duankou.getDuanKou()+"login" ;
-                               JSONObject object=new JSONObject();
-                               try {
-                                   SharedPreferences sharedPreference = getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
-                                   SharedPreferences share = getActivity().getSharedPreferences("Session",MODE_PRIVATE);
-                                   object.put("studentID", sharedPreference.getString("username",""));
-                                   object.put("password", sharedPreference.getString("password",""));
-                                   String data = object.toString();
-                                   HttpUtilPost.sendOkHttpRequest(address, data,null,new okhttp3.Callback(){
-                                       @Override
-                                       public void onFailure(Call call, IOException e) {
-                                           getActivity().runOnUiThread(new Runnable() {
-                                               @Override
-                                               public void run() {
-                                                   Toast.makeText(getContext(),"刷新session失败", Toast.LENGTH_SHORT).show();
-                                               }
-                                           });
-                                       }
+                            JSONObject jsonObject = new JSONObject(responseText);
+                            String status = jsonObject.getString("status");
+                            if (status.equals("success")) {
+                                LitePal.deleteAll(indexStudents.class);
+                                studentsList.clear();
+                                //  System.out.println("此时的长度，额"+studentsList.size());
+                                adapter.notifyDataSetChanged();
+                                Utility.handleMyAndAllResponse(responseText);
+                                refreshLayout.setRefreshing(false);
+                                queryStudents();
+                            }
+                            if(status.equals("fail")){
+                                System.out.println("asdadadz+ssssss5555"+status);
+                                String address = duankou.getDuanKou()+"login" ;
+                                JSONObject object=new JSONObject();
+                                try {
+                                    SharedPreferences sharedPreference = getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
+                                    SharedPreferences share = getActivity().getSharedPreferences("Session",MODE_PRIVATE);
+                                    object.put("studentID", sharedPreference.getString("username",""));
+                                    object.put("password", sharedPreference.getString("password",""));
+                                    String data = object.toString();
+                                    HttpUtilPost.sendOkHttpRequest(address, data,null,new okhttp3.Callback(){
+                                        @Override
+                                        public void onFailure(Call call, IOException e) {
+                                            getActivity().runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    Toast.makeText(getContext(),"刷新session失败", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                        }
 
-                                       @Override
-                                       public void onResponse(Call call, Response response) throws IOException {
-                                           Headers headers =response.headers();
-                                           List cookies = headers.values("Set-Cookie");
-                                           String session = (String)cookies.get(0);
-                                           String sessionid = session.substring(0,session.indexOf(";"));
-                                           SharedPreferences share = getActivity().getSharedPreferences("Session",MODE_PRIVATE);
-                                           SharedPreferences.Editor edit = share.edit();//编辑文件
-                                           edit.putString("sessionid",sessionid);
-                                           edit.apply();
-                                           Message message=new Message();
-                                           message.what=6;
-                                           handler.sendMessage(message);
+                                        @Override
+                                        public void onResponse(Call call, Response response) throws IOException {
+                                            Headers headers =response.headers();
+                                            List cookies = headers.values("Set-Cookie");
+                                            String session = (String)cookies.get(0);
+                                            String sessionid = session.substring(0,session.indexOf(";"));
+                                            SharedPreferences share = getActivity().getSharedPreferences("Session",MODE_PRIVATE);
+                                            SharedPreferences.Editor edit = share.edit();//编辑文件
+                                            edit.putString("sessionid",sessionid);
+                                            edit.apply();
+                                            Message message=new Message();
+                                            message.what=6;
+                                            handler.sendMessage(message);
 
-                                       }
-                                   });
-                               }catch (JSONException E){
-                                   E.printStackTrace();
-                               }
-                           }
-                       }catch (JSONException E){
-                           E.printStackTrace();
-                       }
-                   }
-               });
+                                        }
+                                    });
+                                }catch (JSONException E){
+                                    E.printStackTrace();
+                                }
+                            }
+                        }catch (JSONException E){
+                            E.printStackTrace();
+                        }
+                    }
+                });
             }
         });
     }

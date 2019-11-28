@@ -1,3 +1,4 @@
+
 package com.example.thepunchsystemandroid;
 
 import android.app.ProgressDialog;
@@ -101,7 +102,7 @@ public class LoginActivity extends BaseActivity {
             public void run() {
                 //取消加载框
                 if(dismissProgressDialog()){
-    //超时处理
+                    //超时处理
                 }
             }
         }, 60000);//超时时间60秒
@@ -144,7 +145,7 @@ public class LoginActivity extends BaseActivity {
             JSONObject object=new JSONObject();
             try{
                 object.put("studentID",sharedPreference.getString("username",null));
-                 String url=duankou.getDuanKou()+"getStudentAndPunchInfo";
+                String url=duankou.getDuanKou()+"getStudentAndPunchInfo";
                 HttpUtilGet.sendOkHttpRequestGet(url,object.toString(),session,new okhttp3.Callback(){
                     @Override
                     public void onFailure(Call call, IOException e) {
@@ -265,7 +266,7 @@ public class LoginActivity extends BaseActivity {
                         finish();
                     }
                     if (status.equals("fail")) {
-                       String address = duankou.getDuanKou()+"login";
+                        String address = duankou.getDuanKou()+"login";
                         JSONObject object=new JSONObject();
                         try {
                             SharedPreferences sharedPreference = getSharedPreferences("login", Context.MODE_PRIVATE);
