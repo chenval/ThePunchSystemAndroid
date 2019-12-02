@@ -26,7 +26,7 @@ public class aboutActivity extends BaseActivity {
                 .addItem(new Element().setTitle("Version 3.1"))
                 .addGroup("为什么会变成这样呢……")
                 .addGroup("第一次小组里全是大佬。组里后端大佬又很多。")
-                .addGroup("两件快乐事情重合在一起。而这两份快乐，又给我带来更多的快乐。")
+                .addGroup("两件快乐事情重合在一起。而这两份快乐又给我带来更多的快乐。")
                 .addGroup("得到的，本该是像摸鱼一般幸福的时间……")
                 .addGroup("但是，为什么让我一个半路出家的来学写安卓")
                 .create();

@@ -17,27 +17,10 @@ import java.net.URL;
  * Created by qcl on 14/7/15.
  */
 public class FastBlurUtil {
-    /**
-     * 根据imagepath获取bitmap
-     */
-    /**
-     * 得到本地或者网络上的bitmap url - 网络或者本地图片的绝对路径,比如:
-     * <p>
-     * A.网络路径: url="http://blog.foreverlove.us/girl2.png" ;
-     * <p>
-     * B.本地路径:url="file://mnt/sdcard/photo/image.png";
-     * <p>
-     * C.支持的图片格式 ,png, jpg,bmp,gif等等
-     *
-     * @param url
-     * @return
-     */
+
     public static int IO_BUFFER_SIZE = 2 * 1024;
 
-
     public static Bitmap GetUrlBitmap(String url, int scaleRatio) {
-
-
         int blurRadius = 8;//通常设置为8就行。
         if (scaleRatio <= 0) {
             scaleRatio = 10;
