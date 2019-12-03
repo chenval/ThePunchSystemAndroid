@@ -25,10 +25,6 @@ public class FastBlurUtil {
         if (scaleRatio <= 0) {
             scaleRatio = 10;
         }
-
-
-
-
         Bitmap originBitmap = null;
         InputStream in = null;
         BufferedOutputStream out = null;
